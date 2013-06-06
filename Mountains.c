@@ -94,15 +94,25 @@ int main(void){
   int xsize=1200,ysize=750;
   int* RGB = malloc(3*sizeof(int));
   float xLoc[3],yLoc[3];
+  char c;
   srand(time(NULL));
+
+  // prompt user
+  printf("Add cloud background (y/n)? ");
+  scanf("%c",&c);
 
   // initialize window
   aqtInit();
   aqtOpenPlot(1);
   aqtSetPlotSize(xsize,ysize);
   aqtSetPlotTitle("Mountains");
-  aqtSetColor(.4,.6,.8);
-  aqtAddFilledRect(0,0,xsize,ysize);
+
+  // add background
+  if(c=='y') makeCloudBackground(xsize,ysize);
+  else{
+    aqtSetColor(.4,.6,.8);
+    aqtAddFilledRect(0,0,xsize,ysize);
+  }
 
   // set initial triangle position and color
   xLoc[0] = pow(-1,rand()%2) * (rand()%20);
