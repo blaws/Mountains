@@ -10,7 +10,7 @@ void changeColor(int* RGB,float y[],int ysize){
   for(i=0;i<3;i++){  // change the color slightly
     RGB[i] += rand()%4 * pow(-1,rand()%2);
     if(RGB[i]<50) RGB[i]=50;
-    else if(RGB[i]>120/(i*20+1)) RGB[i]=120/(i*30+1);
+    else if(RGB[i]>120/(i*10+1)) RGB[i]=120/(i*30+1);
     if(abs(RGB[i]-RGB[(i+1)%3])>30) RGB[i]=RGB[(i+1)%3];
   }
 
@@ -121,7 +121,7 @@ int main(void){
   yLoc[1] = -1 * rand()%20;
   xLoc[2] = xsize/4 + rand()%(xsize/2);
   yLoc[2] = ysize + pow(-1,rand()%2) * (rand()%20);
-  RGB[0] = RGB[1] = RGB[2] = rand()%100;
+  RGB[0] = RGB[1] = RGB[2] = 50 + rand()%50;
 
   // draw
   addTriangles(xLoc,yLoc,RGB,ysize);
